@@ -2,6 +2,7 @@ package com.example.wallpaperapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wallpaperapp.databinding.ActivityMainBinding
@@ -22,13 +23,18 @@ class MainActivity : AppCompatActivity() {
 
         val recyclerView: RecyclerView = binding.imagesRecyclerView
 
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.layoutManager = GridLayoutManager(this  , 2)
         recyclerView.adapter = customAdapter
 
 
         val dataset2 = arrayOf("enero", "febrero", "marzo", "abril")
 
         // todo in a button
-        customAdapter.setItems(dataset2)
+        binding.chageInButton.setOnClickListener {
+            customAdapter.setItems(dataset2)
+        }
+        binding.previsouPosition.setOnClickListener {
+            customAdapter.setItems(dataset)
+        }
     }
 }
